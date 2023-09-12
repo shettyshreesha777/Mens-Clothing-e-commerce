@@ -49,12 +49,11 @@ if(count($errors)==0)
 }
 if(isset($_POST['login_user']))
 {
-    echo "ffjfmm hjfhjfhm";
     $email=mysqli_real_escape_string($db,$_POST['email']);
 	$password=mysqli_real_escape_string($db,$_POST['password']);
 
-if(empty($email)){ array_push($errors,"email required");}
-if(empty($password)){ array_push($errors,"password required");}
+if(empty($email)){ array_push($errors,"**Email required\n");}
+if(empty($password)){ array_push($errors,"**Password required\n");}
 if(count($errors) == 0)
 {
   	//$password = md5($password);
@@ -72,12 +71,31 @@ if(mysqli_num_rows($result)==1)
 else
 {
 	array_push($errors,"Username/Email does not exist");
+	?>
+	<script type="text/javascript">
+		var js_array =<?php echo json_encode($errors );?>;
+		window.location.href="login.php";
+		var s=alert(js_array);
+	
+
+	
+	</script>
+	<?php
 }
 }
 else
 {
-	header('location: login.php');
+	?>
+	<script type="text/javascript">
+	var js_array =<?php echo json_encode($errors );?>;
+	window.location.href="login.php";
 
+	var s=alert(js_array);
+
+	</script>
+	<?php 
+	//if($val==1){
+	//header('location: login.php');}
 }
 }
 ?>

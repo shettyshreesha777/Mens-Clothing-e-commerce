@@ -28,7 +28,7 @@ if(isset($_SESSION["username"]))
                 <h3>Sign In</h3>
             </div>
             <div class="card-body w-100">
-                <form name="login" action="RegUser.php" method="post">
+                <form name="login" action="RegUser.php" method="post" >
                     <div class="input-group form-group mt-3">
                         <div class="bg-secondary rounded-start">
                             <span class="m-3"><i
@@ -48,8 +48,9 @@ if(isset($_SESSION["username"]))
                     <div class="form-group mt-3">
                         <input type="submit" value="Login"
                             class="btn bg-secondary float-end text-white w-100"
-                            name="login_user"  onclick="ValidateEmail(document.login.email,document.login.password);">
+                            name="login_user">
                     </div>
+        
                 </form>
 			</div>
             <div class="card-footer">
@@ -62,6 +63,5 @@ if(isset($_SESSION["username"]))
         </div>
     </div>
 </div>
-<script src="email.js"></script>
 </body>
 </html>
