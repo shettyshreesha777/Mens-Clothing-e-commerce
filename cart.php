@@ -5,6 +5,7 @@ include("navbar.php");
 <head>
 <style>
 .bb{
+	margin-top: 200px;
 	height:250px;
 	width:800px;
 	border:2px solid rgba(0,0,0,0.5);
@@ -19,11 +20,11 @@ include("navbar.php");
 		  $conn = mysqli_connect('localhost','root','','ecommerce');
 		  $x=$_GET['itemid'];
 		  $query="SELECT *
-		          FROM items
-		          WHERE itemid=$x'";
+		          FROM item
+		          WHERE itemid='$x'";
 			$result=mysqli_query($conn,$query);
 			$row=mysqli_fetch_assoc($result);
-			echo '<img src="'.$row["img1"].'" heigth:200px; width:100px;>';
+			echo	'<img src='.$row["img1"].'height=200px width=100px >';
 			echo '<h3>'.$row["brand"].'</h3>';
 			echo '<h5>'.$row["itemname"].'</h5>';
 			
@@ -31,7 +32,9 @@ include("navbar.php");
 	</div>
 </div>
 </body>
-</html>
+<footer>
 <?php
 include("footer.php");
 ?>
+</footer>
+</html>

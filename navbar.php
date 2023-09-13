@@ -1,5 +1,8 @@
 <?php 
-session_start();
+if(!isset($_SESSION['username']))
+{
+  session_start();
+}
 if(!isset($_SESSION['username']))
 {
 	header('location: login.php');
@@ -34,25 +37,22 @@ if(isset($_SESSION["success"])) : ?>
   <h4><?php echo $_SESSION["success"];
         unset($_SESSION["success"]); ?></h4>
   <?php endif ?>
-<nav class="navbar navbar-expand-sm fixed-top" style="background-color:beige;">
+<nav class="navbar navbar-expand-sm fixed-top" style="background-color:lightgrey;">
     <ul class="navbar-nav col-sm-4 ps-5">
       <li class="nav-item">
-        <a class="nav-link" href="#">Topwear</a>
+        <a class="nav-link" href="#">Shirts</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">T-Shirts</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Bottomwear</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Footwear</a>
-      </li>
-	  <li class="nav-item">
-        <a class="nav-link" href="#">Accessories</a>
-      </li>
     </ul>
-	<a class="navbar-brand col-sm-4 ps-5" href="index.php">Mens Apparell</a>
-<div class="input-group">
+	<a class="navbar-brand col-sm-4 ps-5" href="index.php"><h3>MENS APPAREL</h3></a>
+<div class="input-group" style="margin-left:-100px;">
   <div class="form-outline">
-    <input type="search" id="form1" class="form-control opp" placeholder="Search..">
+    <input type="search" id="form1" class="form-control opp" placeholder="Search.." style="padding-bottom:20px;">
   </div>
   <button type="button" class="btn btn-primary opp">
     <i class="fa fa-search"></i>
@@ -63,14 +63,14 @@ if(isset($_SESSION["success"])) : ?>
   <?php endif ?>
   <?php
   if(isset($_SESSION["username"])) : ?>
-    <h3><?php echo $_SESSION["username"]; ?>, </h3>
+    <h5 class="nav-link"><?php echo $_SESSION["username"]; ?>, </h5>
     <a class="nav-link ps-5" href="index.php?logout='1'">Logout</a>
   <?php endif ?>
 
-  <a class="navbar-brand" href="#" style="margin-left:20px;">
+  <a class="navbar-brand" href="#">
       <img src="wishlistoutline.png" alt="Avatar Logo" style="width:30px; height:30px;"> 
     </a>
-  <a class="navbar-brand" href="#" style="margin-left:20px;">
+  <a class="navbar-brand" href="#" >
       <img src="shopping-cart.png" alt="Avatar Logo" style="width:30px; height:30px;"> 
     </a>
 </div>

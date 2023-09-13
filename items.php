@@ -79,7 +79,7 @@ echo	'<h6>(Incluive of all taxes)</h6>
 		<li class="itemsize">46</li>
 		</ul>
 		<br><br>
-		<button class="btn btn-danger btn-lg">Add To Bag</button>
+		<button class="btn btn-danger btn-lg"><a href="cart.php?itemid='.$x.'"  style="text-decoration:none; color:white;">Add To Bag</a></button>
 		<button class="btn btn-outline-dark btn-lg" style="margin-left:20px;">Wishlist</button>
 		<br><br>
 		<p>100% Original Products<br>
