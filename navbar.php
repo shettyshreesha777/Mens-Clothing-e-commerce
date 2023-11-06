@@ -51,27 +51,27 @@ if(isset($_SESSION["success"])) : ?>
     </ul>
 	<a class="navbar-brand col-sm-4 ps-5" href="index.php"><h3>MENS APPAREL</h3></a>
 <div class="input-group" style="margin-left:-100px;">
-  <div class="form-outline">
-    <input type="search" id="form1" class="form-control opp" placeholder="Search.." style="padding-bottom:20px;">
-  </div>
-  <button type="button" class="btn btn-primary opp">
+<form action="searchpage.php">
+    <input type="search" id="form1" class="form-control opp" name="searchinput" placeholder="Search.."/>
+  <button type="submit" class="btn btn-primary opp" style="padding:10px;margin-top:-38px;margin-left:200px;">
     <i class="fa fa-search"></i>
   </button>
+</form>
   <?php
   if(!isset($_SESSION["username"])) : ?>
     <a class="nav-link ps-5" href="login.php">Login</a>
   <?php endif ?>
   <?php
   if(isset($_SESSION["username"])) : ?>
-    <h5 class="nav-link"><?php echo $_SESSION["username"]; ?>, </h5>
+    <h5 class="nav-link"><?php echo $_SESSION["username"]; ?>,</h5>
     <a class="nav-link ps-5" href="index.php?logout='1'">Logout</a>
   <?php endif ?>
 
   <a class="navbar-brand" href="#">
       <img src="wishlistoutline.png" alt="Avatar Logo" style="width:30px; height:30px;"> 
     </a>
-  <a class="navbar-brand" href="#" >
-      <img src="shopping-cart.png" alt="Avatar Logo" style="width:30px; height:30px;"> 
+  <a class="navbar-brand" href="cart.php?cid=3" >
+      <img src="shopping-cart.png" id="shopcart" alt="Avatar Logo" style="width:30px; height:30px;"> 
     </a>
 </div>
    

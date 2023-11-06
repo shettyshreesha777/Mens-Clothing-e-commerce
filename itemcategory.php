@@ -8,7 +8,7 @@ include("navbar.php");
 div.colors{
 	display:none;
 }
-a:hover + div.colors{
+a:focus + div.colors{
 	z-index:1;
 	position:absolute;
 	overflow:auto;
@@ -56,22 +56,22 @@ $x=$_GET['catid'];
         <a class="nav-link" href="#" style="color:white;">Color</a>
 		 <div class="colors">
 		<form action="itemcategory.php">
-			<div class="form-check">
+			<div class="form-check ss">
 				<input type="checkbox" class="form-check-input" id="color" name="color" value="White">
 				<label class="form-check-label" for="check1">White</label>
 			</div>
-			<div class="form-check">
+			<div class="form-check ss">
 				<input type="checkbox" class="form-check-input" id="color" name="color" value="Black">
 				<label class="form-check-label" for="check2">Black</label>
 			</div>
-			<div class="form-check">
+			<div class="form-check ss">
 				<input type="checkbox" class="form-check-input" id="color" name="color" value="Purple">
 				<label class="form-check-label">Purple</label>
 			</div>
-			<div class="form-check" style="display:none;">
+			<div class="form-check ss" style="display:none;">
 				<input type="checkbox" class="form-check-input" id="color" name="catid" value=<?php echo $x;?> checked>
 			</div>
-			<button type="submit" class="btn btn-primary mt-3">Submit</button>
+			<button type="submit" class="btn btn-primary mt-3 ss">Submit</button>
 		</form>
 		</div>
       </li>
@@ -79,18 +79,18 @@ $x=$_GET['catid'];
         <a class="nav-link" href="#" style="color:white;padding-left:30px;">Occasion</a>
 		<div class="colors">
 		 <form action="itemcategory.php">
-			<div class="form-check">
+			<div class="form-check ss">
 				<input type="checkbox" class="form-check-input" id="casual" name="subcat" value="casual">
 				<label class="form-check-label" for="check1">Casual</label>
 			</div>
-			<div class="form-check">
+			<div class="form-check ss">
 				<input type="checkbox" class="form-check-input" id="formal" name="subcat" value="formal">
 				<label class="form-check-label" for="check2">Formal</label>
 			</div>
-			<div class="form-check" style="display:none;">
+			<div class="form-check ss" style="display:none;">
 				<input type="checkbox" class="form-check-input" id="color" name="catid" value=<?php echo $x;?> checked>
 			</div>
-			<button type="submit" class="btn btn-primary mt-3">Submit</button>
+			<button type="submit" class="btn btn-primary mt-3 ss">Submit</button>
 		</form>
 		</div>
       </li>

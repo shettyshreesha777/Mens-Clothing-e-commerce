@@ -109,7 +109,7 @@ while(($row=mysqli_fetch_assoc($result))&&($i<5))
 {
 	echo '<div class="catg">';
 	echo '<a href="itemcategory.php?catid='.$row['catid'].'">';
-	echo '<img src='.$row["catimg"].' height=200px width=200px style="border-radius:100%;"></a>';
+	echo '<img src='.$row["catimg"].' id='.$row["catname"].' height=200px width=200px style="border-radius:100%;"></a>';
 	echo '<h3>'.$row["catname"].'</h3>';
 	echo '</div>';
 	$i=$i+1;

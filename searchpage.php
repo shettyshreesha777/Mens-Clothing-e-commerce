@@ -3,6 +3,7 @@ include("navbar.php");
 ?>
 <html>
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
 div.colors{
 	display:none;
@@ -17,7 +18,7 @@ a:focus + div.colors{
 	background:rgba(2,0,0,0.5);
 
 }
-div.colors:focus{
+div.colors:hover{
 	z-index:1;
 	position:absolute;
 	overflow:auto;
@@ -45,57 +46,80 @@ div.brands:hover{
 </style>
 </head>
 <body>
+<?php
+$conn = mysqli_connect('localhost','root','','ecommerce');
+$x=$_GET['searchinput'];
+?>
 <nav class="navbar navbar-expand-sm" style="margin-top:60px; background-color:#C04000;">
     <ul class="navbar-nav col-sm-4 ps-5">
       <li class="nav-item">
         <a class="nav-link" href="#" style="color:white;">Color</a>
 		 <div class="colors">
-		 <form action="items.php">
-			<div class="form-check">
-				<input type="checkbox" class="form-check-input" id="color" name="option1" value="White" onclick=myFunc()>
+		<form action="itemcategory.php">
+			<div class="form-check ss">
+				<input type="checkbox" class="form-check-input" id="color" name="color" value="White">
 				<label class="form-check-label" for="check1">White</label>
 			</div>
-			<div class="form-check">
-				<input type="checkbox" class="form-check-input" id="color" name="option2" value="Black" onclick=myFunc()>
+			<div class="form-check ss">
+				<input type="checkbox" class="form-check-input" id="color" name="color" value="Black">
 				<label class="form-check-label" for="check2">Black</label>
 			</div>
-			<div class="form-check">
-				<input type="checkbox" class="form-check-input" id="color" name="option3" value="Purple" onclick=myFunc()>
+			<div class="form-check ss">
+				<input type="checkbox" class="form-check-input" id="color" name="color" value="Purple">
 				<label class="form-check-label">Purple</label>
 			</div>
-			<button type="submit" class="btn btn-primary mt-3">Submit</button>
+			<div class="form-check ss" style="display:none;">
+				<input type="checkbox" class="form-check-input" id="color" name="catid" value=<?php echo $x;?> checked>
+			</div>
+			<button type="submit" class="btn btn-primary mt-3 ss">Submit</button>
 		</form>
 		</div>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#" style="color:white;padding-left:30px;">Occasion</a>
 		<div class="colors">
-		 <form action="items.php">
-			<div class="form-check">
-				<input type="checkbox" class="form-check-input" id="casual" name="option1" value="something">
+		 <form action="itemcategory.php">
+			<div class="form-check ss">
+				<input type="checkbox" class="form-check-input" id="casual" name="subcat" value="casual">
 				<label class="form-check-label" for="check1">Casual</label>
 			</div>
-			<div class="form-check">
-				<input type="checkbox" class="form-check-input" id="formal" name="option2" value="something">
+			<div class="form-check ss">
+				<input type="checkbox" class="form-check-input" id="formal" name="subcat" value="formal">
 				<label class="form-check-label" for="check2">Formal</label>
 			</div>
-			<button type="submit" class="btn btn-primary mt-3">Submit</button>
+			<div class="form-check ss" style="display:none;">
+				<input type="checkbox" class="form-check-input" id="color" name="catid" value=<?php echo $x;?> checked>
+			</div>
+			<button type="submit" class="btn btn-primary mt-3 ss">Submit</button>
 		</form>
 		</div>
       </li>
 </nav>
+
 <br><br>
 <div class="container-fluid">
   <?php
-$conn = mysqli_connect('localhost','root','','ecommerce');
-if(isset($_GET['color']))
-{
-	$x=$_GET['catid'];
-	$y=$_GET['color'];
 $query="SELECT *
 		FROM item
-		WHERE catid='$x' AND color='$y'";	
+		WHERE brand='$x'";
+$result=mysqli_query($conn,$query);
+$row=mysqli_fetch_assoc($result);
+$rowcount=mysqli_num_rows($result);
+if($rowcount==0)
+{
+$query="SELECT *
+		FROM item
+		WHERE itemname LIKE '%".$x."%'";
+$result=mysqli_query($conn,$query);
+$rowcount=mysqli_num_rows($result);
+if($rowcount==0)
+{
+    echo "<h2>Invalid Search Input..</h2>";
 }
+}
+else{
+
+
 $result=mysqli_query($conn,$query);
 while($row=mysqli_fetch_assoc($result))
 {
@@ -107,17 +131,8 @@ echo '<h5>'.$row["itemname"].'</h5>';
 echo '<h6>Rs.'.$row["price"].'</h6>
 	</div>';
 }
-	?>
+}	?>
 </div>
-<script>
-function myFunc() {
-  var checkBox = document.getElementById("color");
-  var text = checkBox.value;
-  if (checkBox.checked == true){
-    a.href = "itemfilter.php?color=".text;
-  }
-}
-</script>
 </body>
 </html>
 <?php
