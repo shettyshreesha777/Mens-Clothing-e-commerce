@@ -52,6 +52,7 @@ include("navbar.php");
 			echo "<h3 style='text-decoration:line-through; color:red; padding-left:130px;'>".$oldprice."</h3>";
 			echo "<h5 style='display:inline-block;'>After Discount: </h5><h3 style='display:inline-block;'>".$row['price']."</h3>";
 			echo "</div>";
+			echo '<a href="removeitemfromcart.php?itemid='.$row["itemid"].'&cid='.$x.'"><button id="removeitem" type="button" class="btn btn-dark btn-lg opp" style="margin-top:-50px;margin-left:900px;">Remove item</button></a>';
 			echo "</div>";				
 			}
 			?>
